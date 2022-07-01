@@ -5,27 +5,19 @@ terraform {
         version = "~>4.20.1"
     }
   }
+  
+}
+terraform {
+  backend "s3" {
+    bucket = "tf-study-state-backend"
+    key    = "tf-study/terraform.tfstate"
+    region = "us-east-1"
+  }
 }
 
 provider "aws" {
     region = var.region
 }
 
-module "vpc" {
-  source = "terraform-aws-modules/vpc/aws"
 
-  name = var.vpcname
-  cidr = var.vpc-cidr
 
-  azs             = [var.region]
-  private_subnets = [var.priv-subnet]
-  public_subnets  = [var.pub-subnet]
-
-  enable_nat_gateway = true
-  enable_vpn_gateway = true
-
-  tags = {
-    Terraform = "true"
-    Environment = "dev"
-  }
-}
