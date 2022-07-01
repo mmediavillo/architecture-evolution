@@ -1,11 +1,30 @@
+variable "name" {
+    type = string
+    description = "Project Name"
+}
+
 variable "region" {
     type = string
     description = "AWS Region"
 }
 
+variable "environment" {
+    type = string
+    description = "Environment"
+}
+
+variable "availability_zone" {
+    type = string
+    description = "AZ"
+}
+
+variable "all_cidr_block" {
+    type = string
+    description = "Network Route to Any"
+}
 variable "vpc-cidr" {
     type = string
-    description = "(optional) describe your variable"
+    description = "VPC CIDR Block"
 }
 
 variable "priv-subnet" {
@@ -23,7 +42,9 @@ variable "db-subnet" {
     description = "Database Subnet"
 }
 
-variable "vpcname" {
-    type = string
-    description = "VPC Name"
+variable "ec2_instance_type" {
+  type = string
+  default = "t2.micro"
+  description = "EC2 Instance Type"
 }
+
