@@ -48,3 +48,11 @@ variable "ec2_instance_type" {
   description = "EC2 Instance Type"
 }
 
+variable "ec2_pub_ami" {
+  type        = string
+  description = "Public facing EC2 AMI"
+}
+
+variable "web_priv_ip" {
+  description = "Web APP private IP"
+}

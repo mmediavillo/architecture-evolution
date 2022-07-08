@@ -16,3 +16,13 @@ output "igw_pub_ip" {
 output "natgw_pub_ip" {
   value = aws_nat_gateway.public.public_ip
 }
+
+#Public facing EC2 AMI
+output "ec2_pub_ami" {
+  value = aws_instance.web.ami
+}
+
+#Key-Pair Name
+output "dev_deploy" {
+  value = data.aws_key_pair.dev_deploy.key_name
+}
