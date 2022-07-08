@@ -1,3 +1,4 @@
+#Traffic rules from the internet
 resource "aws_security_group" "public" {
   name        = "${var.environment}-${var.name}-public"
   description = "Allows traffic to and from the internet into the public subnet"
@@ -13,7 +14,6 @@ resource "aws_security_group_rule" "public_outbound" {
   to_port           = 0
   protocol          = "-1"
   cidr_blocks       = [aws_vpc.main.cidr_block]
-  ipv6_cidr_blocks  = [aws_vpc.main.ipv6_cidr_block]
   security_group_id = aws_security_group.public.id
 }
 
@@ -59,6 +59,6 @@ resource "aws_security_group_rule" "internal_vpc" {
   from_port         = 0
   to_port           = 65535
   protocol          = "-1"
-  cidr_blocks       = [aws_vpc.cidr_block]
+  cidr_blocks       = [aws_vpc.main.cidr_block]
   security_group_id = aws_security_group.private.id
 }
